@@ -1,0 +1,49 @@
+
+    def gradlePath = ':'
+    def runAppTaskName = 'RunPlugin'
+    def mainClass = 'com.example.ExamplePluginTest'
+    def _workingDir = '/home/runner/runelite-plugin-replit-example'
+
+    def sourceSetName = 'test'
+    def javaModuleName = null
+
+    
+    
+    
+
+    import org.gradle.util.GradleVersion
+
+    allprojects {
+      afterEvaluate { project ->
+        if(project.path == gradlePath && project?.convention?.findPlugin(JavaPluginConvention)) {
+          def overwrite = project.tasks.findByName(runAppTaskName) != null
+          project.tasks.create(name: runAppTaskName, overwrite: overwrite, type: JavaExec) {
+            main = mainClass
+            args '--debug'
+args '--developer-mode'
+jvmArgs '-ea'
+jvmArgs '-ea'
+
+            if (_workingDir) workingDir = _workingDir
+            standardInput = System.in
+            if (javaModuleName) {
+              classpath = tasks[sourceSets[sourceSetName].jarTaskName].outputs.files + project.sourceSets[sourceSetName].runtimeClasspath;
+              if (GradleVersion.current().baseVersion < GradleVersion.version("6.4")) {
+                doFirst {
+                  jvmArgs += [
+                    '--module-path', classpath.asPath,
+                    '--module', javaModuleName + '/' + mainClass
+                  ]
+                  classpath = files()
+                }
+              } else {
+                mainModule = javaModuleName
+              }
+            } else {
+              classpath = project.sourceSets[sourceSetName].runtimeClasspath
+            }
+          }
+        }
+      }
+    }
+    
