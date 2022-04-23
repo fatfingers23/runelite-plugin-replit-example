@@ -8,3 +8,5 @@ Plan on adding more later. But the following files is what was added.
 
 I plain on adding more detail instructions at a later date. But can add the above files to your runelite plugin to get it working.
 Just need to edit the top portion of `PluginTest.gradle` to match your project.
+
+[![Run on Repl.it](https://repl.it/badge/github/fatfingers23/runelite-plugin-replit-example)](https://repl.it/github/fatfingers23/runelite-plugin-replit-example)
