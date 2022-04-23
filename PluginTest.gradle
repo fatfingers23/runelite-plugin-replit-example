@@ -2,7 +2,7 @@
     def gradlePath = ':'
     def runAppTaskName = 'RunPlugin'
     def mainClass = 'com.example.ExamplePluginTest'
-    def _workingDir = '/home/runner/runelite-plugin-replit-example'
+    def _workingDir = '.'
 
     def sourceSetName = 'test'
     def javaModuleName = null

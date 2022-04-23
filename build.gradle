@@ -35,8 +35,3 @@ sourceCompatibility = '1.8'
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
-
-task getDeps(type: Copy) {
-  from sourceSets.main.runtimeClasspath
-  into 'runtime/'
-}
