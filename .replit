@@ -1,1 +1,14 @@
 run="sh main.sh"
+language = "java"
+
+[languages.java]
+pattern = "**/*.java"
+
+[languages.java.languageServer]
+start = ["jdt-language-server"]
+
+[unitTest]
+language = "java"
+
+[nix]
+channel = "stable-21_11"
